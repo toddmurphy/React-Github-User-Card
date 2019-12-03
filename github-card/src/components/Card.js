@@ -1,50 +1,21 @@
-import React, { Component } from 'react';
-import './App.css';
-// import CardList from './components/CardList';
-import Card from './components/Card';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 
-
-class App extends Component {
-  //initialize state
-
-  state = {
-    users: []
-  }
-
-
-  //componentDidMount --> use axios to get data from github api
-  componentDidMount() {
-    axios.get('https://api.github.com/users/toddmurphy')
-      .then(response => {
-        console.log(response.data)
-        this.setState({
-          users: response.data
-        })
-      })
-      .catch(error => {
-        console.log('No github user data returned', error)
-      })
-  }
-
-  //componentDidUpdate
-  // componentDidUpdate() {
-
-  // }
-
-
-  render() {
-    console.log(this.state.users)
+const Card = (props) => {
+    console.log(props)
+    const { id, name, login, location, url, bio } = props.user;
     return (
-      <div className="App">
-        <h1>Github user card project</h1>
-        <Card user={this.state.users} />
-      </div>
-    );
-  }
+        <div>
+            <p>{id}</p>
+            <p>{name}</p>
+            <p>{login}</p>
+            <p>{location}</p>
+            <p>{url}</p>
+            <p>{bio}</p>
+        </div>
+    )
 }
 
-export default App;
+export default Card;
 
 // Github response and data structure
 // avatar_url: "https://avatars3.githubusercontent.com/u/7282612?v=4"

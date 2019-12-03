@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Card = (props) => {
     console.log(props)
-    const { id, name, login, location, url, bio } = props.user;
+    const { avatar_url, id, name, login, location, url, bio, followers } = props.user;
+
     return (
         <div>
-            <p>{id}</p>
-            <p>{name}</p>
-            <p>{login}</p>
-            <p>{location}</p>
-            <p>{url}</p>
-            <p>{bio}</p>
+            <img src={avatar_url} alt='man smiling' />
+            <p>ID: {id}</p>
+            <p>Name{name}</p>
+            <p>Username: {login}</p>
+            <p>Location: {location}</p>
+            <p>Github url: {url}</p>
+            <p>Bio: {bio}</p>
+            <p>Followers: {followers}</p>
         </div>
     )
 }

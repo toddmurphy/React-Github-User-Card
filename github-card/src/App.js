@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-// import CardList from './components/CardList';
-import Card from './components/Card';
+import CardList from './components/CardList';
 import axios from 'axios';
 
 
@@ -9,11 +8,12 @@ class App extends Component {
   //initialize state
 
   state = {
-    users: []
+    users: [],
+    followers: []
   }
 
 
-  //componentDidMount --> use axios to get data from github api
+  //componentDidMount --> use axios to get Todd's person profile from github api
   componentDidMount() {
     axios.get('https://api.github.com/users/toddmurphy')
       .then(response => {
@@ -27,10 +27,19 @@ class App extends Component {
       })
   }
 
-  //componentDidUpdate
-  // componentDidUpdate() {
-
-  // }
+  //componentDidMount --> use axios to get Todd's follower list from github api
+  componentWillMount() {
+    axios.get('https://api.github.com/users/toddmurphy/followers')
+      .then(response => {
+        console.log('followers', response.data)
+        this.setState({
+          followers: response.data
+        })
+      })
+      .catch(error => {
+        console.log('No github followers returned', error)
+      })
+  }
 
 
   render() {
@@ -38,7 +47,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Github user card project</h1>
-        <Card user={this.state.users} />
+        <CardList user={this.state.users} follower={this.state.followers} />
       </div>
     );
   }

@@ -3,6 +3,7 @@ import Followers from './Followers'
 
 const Card = (props) => {
     console.log(props)
+
     const { avatar_url, id, name, login, location, url, bio, followers } = props.user;
 
     return (
@@ -14,8 +15,7 @@ const Card = (props) => {
             <p>Location: {location}</p>
             <p>Github url: {url}</p>
             <p>Bio: {bio}</p>
-            <p>Followers: {followers}</p>
-
+            <p>Follower count: {followers}</p>
             <Followers follower={props.follower} />
         </div>
     )

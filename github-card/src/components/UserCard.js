@@ -17,7 +17,7 @@ const UserCard = (props) => {
             <p>Github url: {url}</p>
             <p>Bio: {bio}</p>
             <p>Follower count: {followers}</p>
-            <Followers follower={props.follower} />
+            {/* <Followers follower={props.follower} /> */}
         </div>
     )
 }

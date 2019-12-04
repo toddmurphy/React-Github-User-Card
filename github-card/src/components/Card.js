@@ -1,4 +1,5 @@
 import React from 'react';
+import Followers from './Followers'
 
 const Card = (props) => {
     console.log(props)
@@ -14,6 +15,8 @@ const Card = (props) => {
             <p>Github url: {url}</p>
             <p>Bio: {bio}</p>
             <p>Followers: {followers}</p>
+
+            <Followers follower={props.follower} />
         </div>
     )
 }

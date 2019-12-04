@@ -7,11 +7,10 @@ import Followers from './Followers'
 const CardList = (props) => {
     return (
         <div>
-            <Card user={props.user} />
-            {/* <Followers follower={props.follower} /> */}
-            {props.follower.map(person => {
-                return <Followers key={person.id} person={person} />
-            })}
+            <Card
+                user={props.user}
+                follower={props.follower}
+            />
         </div>
     )
 }

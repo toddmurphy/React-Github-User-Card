@@ -2,10 +2,13 @@ import React from 'react';
 
 const Followers = (props) => {
 
-    const { login } = props.person;
+
     return (
         <div>
-            <p>{login}</p>
+            {/* <p>{login}</p> */}
+            {props.follower.map(person => {
+                return <p key={person.id}>{person.login}</p>
+            })}
         </div>
     )
 }

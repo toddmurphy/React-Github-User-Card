@@ -6,7 +6,14 @@ const Followers = (props) => {
     return (
         <div>
             {props.follower.map(person => {
-                return <p key={person.id}>{person.login}</p>
+                return (
+                    <div key={person.id}>
+                        {person.login}
+                        {person.id}
+                        {/* {person.avatar_url} */}
+                        <img src={person.avatar_url} />
+                    </div>
+                );
             })}
         </div>
     )

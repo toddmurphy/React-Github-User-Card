@@ -11,7 +11,7 @@ const Followers = (props) => {
                         {person.login}
                         {person.id}
                         {/* {person.avatar_url} */}
-                        <img src={person.avatar_url} />
+                        <img src={person.avatar_url} alt='list of people profile' />
                     </div>
                 );
             })}

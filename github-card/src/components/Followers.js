@@ -1,22 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-const Followers = (props) => {
+import UserCard from './UserCard';
 
-    //Taking in props passed from Cardlist-->Card-->Followers
-    return (
-        <div>
-            {props.follower.map(person => {
+//Followers will be a class component --> get followers data from github api as Follower state lives here
+
+class Followers extends Component {
+    //set initial Follower state
+    state = {
+        followers: []
+    }
+
+    //componentDidMount --> get Follower data from github api
+    componentDidMount() {
+        axios.get("https://api.github.com/users/toddmurphy/followers")
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    followers: response.data
+                })
+            })
+            .catch(error => {
+                console.log('No follower data returned', error)
+            })
+    }
+
+
+    render() {
+        //can destructure this.state
+        const { followers } = this.state;
+
+        return (
+            followers.map(follower => {
+                //can destructure out the 'id'
+                const { id } = follower;
+
                 return (
-                    <div key={person.id}>
-                        {person.login}
-                        {person.id}
-                        {/* {person.avatar_url} */}
-                        <img src={person.avatar_url} alt='list of people profile' />
-                    </div>
-                );
-            })}
-        </div>
-    )
+                    <UserCard key={id} user={follower} />
+                )
+
+            })
+        )
+    }
 }
 
 export default Followers;

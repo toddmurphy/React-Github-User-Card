@@ -1,7 +1,8 @@
 import React from 'react';
+
 import Followers from './Followers'
 
-const Card = (props) => {
+const UserCard = (props) => {
     console.log(props)
 
     const { avatar_url, id, name, login, location, url, bio, followers } = props.user;
@@ -21,7 +22,7 @@ const Card = (props) => {
     )
 }
 
-export default Card;
+export default UserCard;
 
 // Github response and data structure
 // avatar_url: "https://avatars3.githubusercontent.com/u/7282612?v=4"
